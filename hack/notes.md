@@ -1,6 +1,10 @@
+Create EKS Cluster using CDK python and IDF modules
+
+```shell
 export PRIMARY_ACCOUNT=123456789
 export AWS_REGION=us-east-1
 export AWS_USER_OR_ROLE_TO_ASSUME_SEEDFARMER_TOOLCHAIN_ROLE=arn:aws:iam::$PRIMARY_ACCOUNT:user/Administrator
+```
 
 ```shell
 npm install -g aws-cdk
