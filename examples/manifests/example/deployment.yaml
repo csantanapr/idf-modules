@@ -3,13 +3,15 @@ toolchainRegion: us-east-1
 groups:
   - name: networking
     path: manifests/example/networking-modules.yaml
-  - name: storage
-    path: manifests/example/storage-modules.yaml
+  - name: compute
+    path: manifests/example/carlos-eks.yaml
+#  - name: storage
+#    path: manifests/example/storage-modules.yaml
 targetAccountMappings:
   - alias: primary
     accountId:
       valueFrom:
-        envVariable: "1234567890"
+        envVariable: PRIMARY_ACCOUNT
     default: true
     regionMappings:
       - region: us-east-1
