@@ -42,7 +42,8 @@ export CLUSTER_NAME=$(aws eks --region ${AWS_REGION} list-clusters --output json
 
 Use role used to create the cluster
 ```shell
-aws eks --region ${AWS_REGION} update-kubeconfig --name ${CLUSTER_NAME} --role-arn arn:aws:iam::${PRIMARY_ACCOUNT}:role/exampleproj-examples-comp-clusterCreationRole2B3B5-1IJMT6KGJMOWK
+aws eks --region ${AWS_REGION} update-kubeconfig --name ${CLUSTER_NAME} \
+--role-arn $(seedfarmer list moduledata -d examples -p exampleproj --region us-east-1 -g compute -m eks | jq -r .EksClusterAdminRoleArn)
 ```
 
 
@@ -66,5 +67,8 @@ export KUBECONFIG=/tmp/${CLUSTER_NAME}
 aws eks --region ${AWS_REGION} update-kubeconfig --name ${CLUSTER_NAME} --role-arn arn:aws:iam::${PRIMARY_ACCOUNT}:role/ReadOnly
 ```
 
-
+Destroy
+```shell
+seedfarmer destroy examples --region us-east-1 --env-file .env
+```
 
